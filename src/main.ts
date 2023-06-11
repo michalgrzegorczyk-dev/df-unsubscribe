@@ -43,7 +43,7 @@ export class App implements OnInit {
       .pipe(
         // takeUntil(this.destroy$),
         switchMap((url: string) => this.polling.startPollingData(url)),
-        take(1),
+        // take(1),
         takeUntil(this.destroy$)
       )
       .subscribe((url) => console.log(url));
