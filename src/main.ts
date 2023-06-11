@@ -7,6 +7,7 @@ import {
   map,
   Subject,
   switchMap,
+  take,
   takeUntil,
   timer,
 } from 'rxjs';
@@ -41,6 +42,7 @@ export class App implements OnInit {
     this.polling.url$
       .pipe(
         // takeUntil(this.destroy$),
+        take(1),
         switchMap((url: string) => this.polling.startPollingData(url)),
         takeUntil(this.destroy$)
       )
