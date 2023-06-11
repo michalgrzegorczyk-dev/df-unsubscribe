@@ -42,8 +42,8 @@ export class App implements OnInit {
     this.polling.url$
       .pipe(
         // takeUntil(this.destroy$),
-        take(1),
         switchMap((url: string) => this.polling.startPollingData(url)),
+        take(1),
         takeUntil(this.destroy$)
       )
       .subscribe((url) => console.log(url));
